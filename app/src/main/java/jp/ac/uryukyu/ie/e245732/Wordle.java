@@ -76,7 +76,7 @@ public class Wordle {
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 6; i++) {
             System.out.println("----------------------\n<英単語を推測せよ>");
-            System.out.println("(ルール)\n○:文字も場所も一致\n△:文字は一致、場所は不一致");
+            System.out.println("(ルール)\n○:文字も場所も一致\n△:文字は一致、場所は不一致\n :すべて不一致");
             System.out.printf("--------- %d/6 --------\n", i + 1);
             printGuesses();
             String guess;

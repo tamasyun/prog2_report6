@@ -12,4 +12,18 @@ public class WordLoaderTest {
         assertNotNull(words);
         assertFalse(words.isEmpty());
     }
+
+    @Test
+    public void testLoadWordsFileNotFound() {
+        List<String> words = WordLoader.loadWords();
+        assertTrue(words.size() > 3);
+        assertFalse(words.contains("test"));
+    }
+
+    @Test
+    public void testLoadWordsContent() {
+        List<String> words = WordLoader.loadWords();
+        assertTrue(words.contains("apple"));
+        assertTrue(words.contains("banana"));
+    }
 }

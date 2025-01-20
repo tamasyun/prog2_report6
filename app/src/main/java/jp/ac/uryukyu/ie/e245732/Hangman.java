@@ -12,11 +12,11 @@ public class Hangman {
     private String answer;
     private ArrayList<Character> answerChars;
     private ArrayList<Character> guessed;
-    List<String> words;
+    private List<String> words;
 
     Hangman() {
         Random rand = new Random();
-        List<String> words = loadWords("WordList.txt");
+        List<String> words = loadWords("src/main/java/jp/ac/uryukyu/ie/e245732/WordList.txt");
         this.words = words;
         this.answer = words.get(rand.nextInt(words.size()));
         this.answerChars = new ArrayList<>();
@@ -26,17 +26,17 @@ public class Hangman {
         this.guessed = new ArrayList<>();
     }
 
-    private List<String> loadWords(String file) {
+    public List<String> loadWords(String file) {
         try {
             return Files.readAllLines(Paths.get(file));
         } catch (IOException e) {
             System.out.println(e);
-            return List.of("apple");
+            return List.of("test");
         }
     }
 
     public boolean judgeCharacter(char c) {
-        if (answerChars.contains(c)) {
+        if (answerChars.contains(c) && !guessed.contains(c)) {
             guessed.add(c);
             return true;
         } else {
@@ -54,6 +54,17 @@ public class Hangman {
             }
         }
         return sb.toString();
+    }
+    public void setAnswer(String answer){
+        this.answer = answer;
+        this.answerChars = new ArrayList<>();
+        for (char c : answer.toCharArray()) {
+            answerChars.add(c);
+        }
+        this.guessed = new ArrayList<>(); 
+    }
+    public List<String> getWords(){
+        return words;
     }
 
 }

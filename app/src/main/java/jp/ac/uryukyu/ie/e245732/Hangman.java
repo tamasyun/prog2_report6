@@ -34,4 +34,14 @@ public class Hangman {
             return List.of("apple");
         }
     }
+
+    public boolean judgeCharacter(char c) {
+        if (answerChars.contains(c)) {
+            guessed.add(c);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }

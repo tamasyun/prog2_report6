@@ -59,4 +59,27 @@ public class Wordle {
             System.out.println(guessed.get(i));
         }
     }
+
+    public void play() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("<英単語を推測せよ>");
+        for (int i = 0; i < 6; i++) {
+            System.out.printf("--------- %d --------\n",i+1);
+            printGuesses();
+            String guess;
+            while(true) {
+                System.out.printf("%d文字の単語を入力: ", answer.length());
+                guess = scanner.next();
+                if (guess.length() == answer.length()) {
+                    break;
+                } else {
+                    System.out.println("(再度入力してください。)");
+                }
+            }
+            if(judge(guess)){
+                break;
+            }
+        }
+        System.out.println("正解は「" + answer + "」でした。");
+    }
 }

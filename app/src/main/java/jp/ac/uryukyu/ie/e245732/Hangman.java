@@ -70,7 +70,7 @@ public class Hangman {
                     break;
                 } else {
                     System.out.println("(入力が無効です。半角英字1文字を入力してください。)");
-    }
+                }
             }
             if (!judgeCharacter(guessedChar)) {
                 System.out.println("含まれません");

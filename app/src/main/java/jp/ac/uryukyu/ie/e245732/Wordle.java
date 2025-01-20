@@ -30,7 +30,7 @@ public class Wordle {
             char c = word.charAt(i);
             if (answerCharsLeft.get(i) == c) {
                 sb.append("○");
-                answerCharsLeft.remove(i);
+                answerCharsLeft.set(i, null);
             } else {
                 sb.append(" ");
             }
@@ -40,7 +40,7 @@ public class Wordle {
             if (sb.charAt(i) == ' ') {
                 if (answerCharsLeft.contains(c)) {
                     sb.setCharAt(i, '△');
-                    answerCharsLeft.remove(i);
+                    answerCharsLeft.set(answerCharsLeft.indexOf(c), null);
                 }
             }
         }
@@ -62,9 +62,10 @@ public class Wordle {
 
     public void play() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("<英単語を推測せよ>");
+        System.out.println("----------------------\n<英単語を推測せよ>");
+        System.out.println("(ルール)\n○:文字も場所も一致\n△:文字は一致、場所は不一致");
         for (int i = 0; i < 6; i++) {
-            System.out.printf("--------- %d --------\n",i+1);
+            System.out.printf("--------- %d/6 --------\n",i+1);
             printGuesses();
             String guess;
             while(true) {

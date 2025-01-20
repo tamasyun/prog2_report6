@@ -55,7 +55,7 @@ public class Hangman {
         return words;
     }
 
-    public void start() {
+    public void play() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("<英単語を1字づつ推測せよ>");
         for (int i = 0; i < 6; i++) {

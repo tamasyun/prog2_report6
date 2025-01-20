@@ -44,4 +44,16 @@ public class Hangman {
         }
     }
 
+    public String printQuestion() {
+        StringBuilder sb = new StringBuilder();
+        for (char c : answer.toCharArray()) {
+            if (guessed.contains(c)) {
+                sb.append(c);
+            } else {
+                sb.append("_");
+            }
+        }
+        return sb.toString();
+    }
+
 }

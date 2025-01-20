@@ -9,6 +9,7 @@ public class Wordle {
     private String answer;
     private ArrayList<Character> answerChars;
     private ArrayList<String> guessed;
+    private ArrayList<String> judgedGuess;
     private List<String> words;
     Wordle() {
         Random rand = new Random();
@@ -20,5 +21,19 @@ public class Wordle {
             answerChars.add(c);
         }
         this.guessed = new ArrayList<>();
+        this.judgedGuess = new ArrayList<>();
+    }
+    public void judge(String word){
+        StringBuilder sb = new StringBuilder();
+        for (char c : word.toCharArray()) {
+            if (answerChars.get(0) == c) {
+                sb.append("○");
+            } else if (answerChars.contains(c)) {
+                System.out.print("△");
+            } else {
+                sb.append(" ");
+            }
+        }
+        judgedGuess.add(sb.toString());
     }
 }

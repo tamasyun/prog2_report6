@@ -4,9 +4,6 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.io.IOException;
 
 public class Hangman {
     private String answer;
@@ -16,7 +13,7 @@ public class Hangman {
 
     Hangman() {
         Random rand = new Random();
-        List<String> words = loadWords("app/src/main/java/jp/ac/uryukyu/ie/e245732/WordList.txt");
+        List<String> words = WordLoader.loadWords("app/src/main/java/jp/ac/uryukyu/ie/e245732/WordList.txt");
         this.words = words;
         this.answer = words.get(rand.nextInt(words.size()));
         this.answerChars = new ArrayList<>();
@@ -24,15 +21,6 @@ public class Hangman {
             answerChars.add(c);
         }
         this.guessed = new ArrayList<>();
-    }
-
-    public List<String> loadWords(String file) {
-        try {
-            return Files.readAllLines(Paths.get(file));
-        } catch (IOException e) {
-            System.out.println(e);
-            return List.of("test");
-        }
     }
 
     public boolean judgeCharacter(char c) {

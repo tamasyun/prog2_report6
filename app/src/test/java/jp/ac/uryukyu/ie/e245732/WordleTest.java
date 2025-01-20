@@ -17,7 +17,7 @@ public class WordleTest {
         Wordle game = new Wordle();
         game.setAnswer("abca");
         game.judge("aaaa");
-        assertEquals("○  ○", game.getJudgedGuess().get(0));
+        assertEquals("○**○", game.getJudgedGuess().get(0));
     }
 
     @Test
@@ -25,7 +25,7 @@ public class WordleTest {
         Wordle game = new Wordle();
         game.setAnswer("abca");
         game.judge("aaef");
-        assertEquals("○△  ", game.getJudgedGuess().get(0));
+        assertEquals("○△**", game.getJudgedGuess().get(0));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class WordleTest {
         Wordle game = new Wordle();
         game.setAnswer("abcd");
         game.judge("wxyz");
-        assertEquals("    ", game.getJudgedGuess().get(0));
+        assertEquals("****", game.getJudgedGuess().get(0));
     }
 
 }

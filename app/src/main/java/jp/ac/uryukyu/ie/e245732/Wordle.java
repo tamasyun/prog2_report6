@@ -36,4 +36,11 @@ public class Wordle {
         }
         judgedGuess.add(sb.toString());
     }
+
+    public void printGuesses(){
+        for (int i = 0; i < guessed.size(); i++) {
+            System.out.println(judgedGuess.get(i));
+            System.out.println(guessed.get(i));
+        }
+    }
 }

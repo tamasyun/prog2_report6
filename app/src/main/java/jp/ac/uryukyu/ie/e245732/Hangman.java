@@ -9,12 +9,10 @@ public class Hangman {
     private String answer;
     private ArrayList<Character> answerChars;
     private ArrayList<Character> guessed;
-    private List<String> words;
 
     Hangman() {
         Random rand = new Random();
-        List<String> words = WordLoader.loadWords("app/src/main/java/jp/ac/uryukyu/ie/e245732/WordList.txt");
-        this.words = words;
+        List<String> words = WordLoader.loadWords();
         this.answer = words.get(rand.nextInt(words.size()));
         this.answerChars = new ArrayList<>();
         for (char c : answer.toCharArray()) {
@@ -43,16 +41,14 @@ public class Hangman {
         }
         return sb.toString();
     }
-    public void setAnswer(String answer){
+
+    public void setAnswer(String answer) {
         this.answer = answer;
         this.answerChars = new ArrayList<>();
         for (char c : answer.toCharArray()) {
             answerChars.add(c);
         }
-        this.guessed = new ArrayList<>(); 
-    }
-    public List<String> getWords(){
-        return words;
+        this.guessed = new ArrayList<>();
     }
 
     public void play() {
@@ -62,7 +58,7 @@ public class Hangman {
             System.out.printf("-------- %d/6 --------\n", i + 1);
             System.out.println(printQuestion());
             char guessedChar;
-            while(true) {
+            while (true) {
                 System.out.print("入力: ");
                 String input = scanner.next();
                 if (input.length() == 1) {
@@ -79,7 +75,7 @@ public class Hangman {
                 break;
             }
         }
-        System.out.println("正解は「"+answer+"」でした！");
+        System.out.println("正解は「" + answer + "」でした！");
         scanner.close();
     }
 

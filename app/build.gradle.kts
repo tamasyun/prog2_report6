@@ -47,3 +47,7 @@ tasks.withType<Jar> {
         attributes["Main-Class"] = "jp.ac.uryukyu.ie.e245732.Main"
     }
 }
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}

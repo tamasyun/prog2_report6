@@ -2,15 +2,8 @@ package jp.ac.uryukyu.ie.e245732;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import java.util.List;
 
 public class HangmanTest {
-    @Test
-    public void testLoadWords() {
-        Hangman game = new Hangman();
-        List<String> words = game.getWords();
-        assertNotEquals(0, words.size());
-    }
 
     @Test
     public void testJudgeCharacter() {

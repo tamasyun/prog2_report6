@@ -23,18 +23,34 @@ public class Wordle {
         this.guessed = new ArrayList<>();
         this.judgedGuess = new ArrayList<>();
     }
-    public void judge(String word){
+    public boolean judge(String word){
+        ArrayList<Character> answerCharsLeft = new ArrayList<>(this.answerChars);
         StringBuilder sb = new StringBuilder();
-        for (char c : word.toCharArray()) {
-            if (answerChars.get(0) == c) {
+        for (int i = 0; i < word.length(); i++) { //文字も場所も一致
+            char c = word.charAt(i);
+            if (answerCharsLeft.get(i) == c) {
                 sb.append("○");
-            } else if (answerChars.contains(c)) {
-                System.out.print("△");
+                answerCharsLeft.remove(i);
             } else {
                 sb.append(" ");
             }
         }
+        for (int i = 0; i < word.length(); i++) {//文字は一致、場所は不一致
+            char c = word.charAt(i);
+            if (sb.charAt(i) == ' ') {
+                if (answerCharsLeft.contains(c)) {
+                    sb.setCharAt(i, '△');
+                    answerCharsLeft.remove(i);
+                }
+            }
+        }
         judgedGuess.add(sb.toString());
+        guessed.add(word);
+        if(word.equals(answer)){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     public void printGuesses(){

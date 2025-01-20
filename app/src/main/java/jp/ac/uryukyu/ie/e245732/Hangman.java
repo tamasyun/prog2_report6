@@ -16,7 +16,7 @@ public class Hangman {
 
     Hangman() {
         Random rand = new Random();
-        List<String> words = loadWords("src/main/java/jp/ac/uryukyu/ie/e245732/WordList.txt");
+        List<String> words = loadWords("app/src/main/java/jp/ac/uryukyu/ie/e245732/WordList.txt");
         this.words = words;
         this.answer = words.get(rand.nextInt(words.size()));
         this.answerChars = new ArrayList<>();
@@ -65,6 +65,34 @@ public class Hangman {
     }
     public List<String> getWords(){
         return words;
+    }
+
+    public void start() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("<英単語を1字づつ推測せよ>");
+        for (int i = 0; i < 6; i++) {
+            System.out.printf("-------- %d/6 --------\n", i + 1);
+            System.out.println(printQuestion());
+            char guessedChar;
+            while(true) {
+                System.out.print("入力: ");
+                String input = scanner.next();
+                if (input.length() == 1) {
+                    guessedChar = input.charAt(0);
+                    break;
+                } else {
+                    System.out.println("(入力が無効です。半角英字1文字を入力してください。)");
+    }
+            }
+            if (!judgeCharacter(guessedChar)) {
+                System.out.println("含まれません");
+            }
+            if (answer.equals(printQuestion())) {
+                break;
+            }
+        }
+        System.out.println("正解は「"+answer+"」でした！");
+        scanner.close();
     }
 
 }
